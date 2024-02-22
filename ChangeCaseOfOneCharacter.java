@@ -25,7 +25,7 @@ public class ChangeCaseOfOneCharacter {
             }
         }
 
-        inputString = String.valueOf(characterArray);
+        inputString = String.valueOf(characterArray); // convert character array to String
         System.out.println(inputString);
 
     }
