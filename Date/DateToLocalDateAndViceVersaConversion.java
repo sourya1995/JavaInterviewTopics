@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.Instant;
 
-public class DateConversion {
+public class DateToLocalDateAndViceVersaConversion {
     public static void main(String[] args) {
         Date date = Date.from(Instant.now());
         ZoneId defaultZoneId = ZoneId.systemDefault();
