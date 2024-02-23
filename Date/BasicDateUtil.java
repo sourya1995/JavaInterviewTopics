@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class BasicDateUtil {
     public static void main(String[] args) {
@@ -52,6 +53,20 @@ public class BasicDateUtil {
 
         LocalDateTime ldatetime2 = LocalDateTime.now(ZoneId.systemDefault());
         System.out.println(ldatetime2);
+
+        LocalTime localTime = LocalTime.now();
+        System.out.println(localTime);
+
+        LocalTime midnight = LocalTime.MIDNIGHT;
+        System.out.println(midnight); // 00:00
+
+        LocalTime noon = LocalTime.NOON;
+        System.out.println(noon); // 12:00
+
+        LocalTime randomTime = LocalTime.of(12, 12, 45);
+        System.out.println(randomTime); // 12:12:45
+        randomTime.plusMinutes(1);
+        randomTime.getMinute();
 
     }
 }
