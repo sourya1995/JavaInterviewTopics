@@ -1,3 +1,4 @@
+package Strings;
 public class ReverseStrings {
     public static void main(String[] args) {
         String code = "code";

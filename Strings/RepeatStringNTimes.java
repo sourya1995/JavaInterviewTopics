@@ -1,3 +1,4 @@
+package Strings;
 public class RepeatStringNTimes {
     public static void main(String[] args) {
         // execute statements here

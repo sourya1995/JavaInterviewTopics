@@ -1,3 +1,4 @@
+package Strings;
 public class MoreStringPractice {
 
     public static void main(String[] args) {

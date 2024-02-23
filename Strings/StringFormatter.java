@@ -1,3 +1,4 @@
+package Strings;
 import java.util.Formatter;
 
 public class StringFormatter {

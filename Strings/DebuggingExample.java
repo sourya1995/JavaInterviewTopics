@@ -1,3 +1,4 @@
+package Strings;
 public class DebuggingExample {
 	public static void main(String[] args) {
 		int firstInt = 7;
