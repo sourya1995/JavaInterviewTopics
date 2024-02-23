@@ -8,18 +8,21 @@ public class StringPractice {
         String fourthString = "Taki";
         String fifthString = "TAKI";
 
-        if(firstString.equals(secondString)){
+        if (firstString.equals(secondString)) {
             System.out.println("Both strings have same content");
         }
 
-        if(firstString.equalsIgnoreCase(thirdString)){
+        if (firstString.equalsIgnoreCase(thirdString)) {
             System.out.println("Both strings have same content ignoring case");
         }
 
         Locale locale = Locale.forLanguageTag("tr-TR");
-        System.out.println(fourthString.toLowerCase(locale).equals(secondString.toLowerCase(locale))); //false
-        
+        System.out.println(fourthString.toLowerCase(locale).equals(fifthString.toLowerCase(locale))); // false
+
+        String movie = "Aggretsuko";
+        long length = movie.codePoints().count(); //returns long
+        System.out.println(length);
+
     }
-    
 
 }
