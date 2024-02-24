@@ -9,6 +9,7 @@ import java.time.ZoneOffset;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.Clock;
+import java.time.format.DateTimeFormatter;
 
 public class TimeUtils {
     public static void main(String[] args) {
@@ -39,5 +40,10 @@ public class TimeUtils {
 
         Clock clock = Clock.systemUTC();
         System.out.println(clock.instant());
+
+        String pattern = "d-MM-yyyy HH:mm";
+        DateTimeFormatter dtF1 = DateTimeFormatter.ofPattern(pattern);
+        LocalDateTime ldp2 = LocalDateTime.parse("15-05-2016 13:55", dtF1);
+        System.out.println(ldp2);
     }
 }
