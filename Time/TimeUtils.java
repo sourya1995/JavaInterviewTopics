@@ -8,6 +8,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.time.Clock;
 
 public class TimeUtils {
     public static void main(String[] args) {
@@ -32,5 +33,11 @@ public class TimeUtils {
         Long daysBetween = ChronoUnit.DAYS.between(LocalDate.now(), LocalDate.now().plusDays(3));
         System.out.println(daysBetween);
 
+        LocalDateTime ldt2 = LocalDateTime.now(Clock.system(ZoneId
+                .of(ZoneId.SHORT_IDS.get("PST"))));
+        System.err.println(ldt2);
+
+        Clock clock = Clock.systemUTC();
+        System.out.println(clock.instant());
     }
 }
