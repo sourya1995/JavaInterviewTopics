@@ -1,9 +1,12 @@
 package Collections.Lists;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class SortingComparable {
     public static void main(String[] args) {
@@ -30,6 +33,11 @@ public class SortingComparable {
         }
 
         users.sort((l, r) -> l.username.compareTo(r.username)); // lambda expression of Java8
+
+        //List of Integers to String
+        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        List<String> strings = numbers.stream().map(Object::toString).collect(Collectors.toList());
+       
 
     }
 }
