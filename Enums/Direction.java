@@ -14,6 +14,6 @@ public enum Direction {
         EAST.opposite = WEST;
         WEST.opposite = EAST;
         SOUTH.opposite = NORTH;
-    }
+    } //static initializer, initializes before the class can be used
 
 }
