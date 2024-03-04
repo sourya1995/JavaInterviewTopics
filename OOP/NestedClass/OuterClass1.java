@@ -21,7 +21,7 @@ public class OuterClass1 {
     }
 
     public static void aStaticMethod() {
-        StaticNestedClass nested = new StaticNestedClass();
+        StaticNestedClass nested = new StaticNestedClass(); //legal
     }
 
 }
