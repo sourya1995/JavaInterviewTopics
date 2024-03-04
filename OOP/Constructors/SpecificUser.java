@@ -4,7 +4,7 @@ public class SpecificUser extends User {
     private String specificUserID;
 
     public SpecificUser(String specificUserID, long userID, String name) {
-        super(userID, name);
+        super(userID, name); //args of the original class
         this.specificUserID = specificUserID;
     }
 
