@@ -1,4 +1,4 @@
-package Streams;
+package Streams.Concepts;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;

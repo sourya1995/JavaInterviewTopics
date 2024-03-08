@@ -1,4 +1,4 @@
-package Streams;
+package Streams.Concepts;
 
 public class Person {
     private String firstName;
