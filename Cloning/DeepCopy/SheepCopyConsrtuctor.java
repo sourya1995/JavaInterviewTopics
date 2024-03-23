@@ -13,5 +13,12 @@ public class SheepCopyConsrtuctor {
        this.weight = original.weight;
     }
 
-    
-}
+    public static void main(String[] args) {
+        SheepCopyConsrtuctor original = new SheepCopyConsrtuctor("Dolly", 50);
+        SheepCopyConsrtuctor copy = new SheepCopyConsrtuctor(original);
+        System.out.println(original.name + " " + original.weight);
+        System.out.println(copy.name + " " + copy.weight); 
+    }
+    }
+
+/* deep copy - copying the fields of existng object, to a NEW OBJECT -> NEW REFERENCE */
