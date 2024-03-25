@@ -29,5 +29,19 @@ public class Client {
         socket.close();
     
     }
+
+    public static void main(String[] args) {
+        try {
+            final String ip = args[0];
+            final int port = Integer.parseInt(args[1]);
+            Client client = new Client(ip, port);
+            while (true) {
+                client.printMessage();
+                client.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
 }

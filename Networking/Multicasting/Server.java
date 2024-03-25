@@ -30,5 +30,17 @@ public class Server {
         serverSocket.close();
     }
 
+    public static void main(String[] args) {
+        try {
+            final String ip = args[0];
+            final int port = Integer.parseInt(args[1]);
+            Server server = new Server(ip, port);
+            server.send();
+            server.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
