@@ -11,7 +11,7 @@ public class PolymorphismDemo {
         machines.add(new Jet());
         machines.add(new Helicopter());
         machines.add(new Jet());
-        machines.add(new Bomber())
+        machines.add(new Bomber());
 
         new MakeThingsFly().letTheMachinesFly(machines);
 
