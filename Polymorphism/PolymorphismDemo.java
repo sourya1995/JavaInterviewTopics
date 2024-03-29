@@ -11,6 +11,7 @@ public class PolymorphismDemo {
         machines.add(new Jet());
         machines.add(new Helicopter());
         machines.add(new Jet());
+        machines.add(new Bomber())
 
         new MakeThingsFly().letTheMachinesFly(machines);
 
@@ -49,5 +50,13 @@ class Helicopter extends FlyingMachine {
     @Override
     public void fly() {
         System.out.println("Start vertically, hover, fly");
+    }
+}
+
+
+class Bomber extends FlyingMachine {
+    @Override
+    public void fly() {
+        System.out.println("Start, take off, shoot");
     }
 }
