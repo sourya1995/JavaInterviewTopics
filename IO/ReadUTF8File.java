@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class ReadUTF8File {
 
@@ -22,5 +23,9 @@ public class ReadUTF8File {
 
         String s = new String(Files.readAllBytes(Paths.get("test.txt")), StandardCharsets.UTF_8);
         System.out.println(s);
+
+        String str = "something";
+        byte[] textInUTF8 = str.getBytes(StandardCharsets.UTF_8);
+        System.out.println(Arrays.toString(textInUTF8));
     }
 }
