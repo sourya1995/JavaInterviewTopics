@@ -18,10 +18,10 @@ public class CountDownLatchDemo {
             }
             CountDownLatch latch = new CountDownLatch(numberOfThreads);
             for(int n = 0; n < numberOfThreads; n++){
-                Thread t = new Thread(new DoSomethingInAThread(latch));
+                Thread t = new Thread(new DoSomethingInAThread(latch)); //each instance of DoSomethingInAThread decrements the latch counter by 1
                 t.start();
             }
-            latch.await();
+            latch.await(); //block main thread until latch is released (equal to zero)
             System.out.println("in main thread after completion of" + numberOfThreads + "threads");
         }catch(Exception e){
             e.printStackTrace();
