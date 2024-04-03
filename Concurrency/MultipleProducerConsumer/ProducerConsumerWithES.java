@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ProducerConsumerWithES {
     public static void main(String[] args) {
-        BlockingQueue<Integer> sharedQueue = new LinkedBlockingQueue<Integer>();
+        BlockingQueue<Integer> sharedQueue = new LinkedBlockingQueue<Integer>(); //shared among all threads
         ExecutorService pes = Executors.newFixedThreadPool(2);
         ExecutorService ces = Executors.newFixedThreadPool(2);
         pes.submit(new Producer(sharedQueue, 1));

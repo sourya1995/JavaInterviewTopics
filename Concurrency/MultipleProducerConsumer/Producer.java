@@ -22,7 +22,7 @@ public class Producer implements Runnable {
                 int number = random.nextInt(100);
                 System.out.println("Produced: " + number + ":by thread" + threadNo);
                 sharedQueue.put(number);
-                Thread.sleep(1000);
+                Thread.sleep(1000); //one integer produced every second
             } catch (Exception e) {
                 e.printStackTrace();
             }
