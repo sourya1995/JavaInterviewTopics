@@ -8,7 +8,7 @@ public class ProducerConsumerExample {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         BlockingQueue<ProducedData> queue = new ArrayBlockingQueue<ProducedData>(1000);
         Thread producer = new Thread(new Producer(queue));
         Thread consumer = new Thread(new Consumer(queue));
