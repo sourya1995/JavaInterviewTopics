@@ -21,7 +21,8 @@ public class InvokeAllDemo {
         }
         System.out.println("Start");
         try {
-            List<Future<Long>> futures = service.invokeAll(futureList);
+            List<Future<Long>> futures = service.invokeAll(futureList); //executes given tasks, returns a list of Futures holding their status and results when 
+            //everything is completed
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
