@@ -15,16 +15,16 @@ public class AsyncExample2 {
         ExecutorService service = Executors.newCachedThreadPool();
         List<Future<Integer>> futures = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Future<Integer> submittedFuture = (Future<Integer>) service.submit(new AsyncMaintenanceTaskCompleter(i));
-            futures.add(submittedFuture);
+            Future<Integer> submittedFuture = (Future<Integer>) service.submit(new AsyncMaintenanceTaskCompleter(i)); //returns a future 
+            futures.add(submittedFuture); //returned future stored for later
         }
         service.shutdown();
         while(!futures.isEmpty()){
             for(int j = 0; j  < futures.size(); j++){
-                Future<Integer> f = futures.get(j);
-                if(f.isDone()){
+                Future<Integer> f = futures.get(j); //get the future
+                if(f.isDone()){ //check if task is done, prevents blocking of current thread
                     try{
-                        int timeout = f.get();
+                        int timeout = f.get(); //get the value
                         log.info(String.format("A task just completed after sleeping for %dseconds", timeout));
                         futures.remove(f);
                     }catch(InterruptedException e){
