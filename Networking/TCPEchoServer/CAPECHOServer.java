@@ -33,6 +33,9 @@ public class CAPECHOServer extends Thread {
                     DataInputStream is = new DataInputStream(client.getInputStream());
                     DataOutputStream os = new DataOutputStream(client.getOutputStream());
                     os.writeUTF("welcome");
+                    String inString = is.readUTF();
+                    String outString = inString.toUpperCase();
+                    os.writeUTF(outString);
                     is.close();
                     os.close();
                     client.close();
