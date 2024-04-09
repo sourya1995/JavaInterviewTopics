@@ -19,7 +19,7 @@ interface Observable {
     }
 
     public default void notify(String a) {
-        for (Observer o : getObservers()) {
+        for (Observer o : getObservers()) { //TODO
             o.onAction(a);
         }
     }
