@@ -34,3 +34,5 @@ public class BankCustomer extends BankDetails implements CreditCard {
     }
     
 }
+
+//Adapter
