@@ -5,3 +5,4 @@ public interface PlayerFactory {
     Player createMidfielder();
     Player createDefender();
 }
+ //in abstract factory, create an interface of methods first

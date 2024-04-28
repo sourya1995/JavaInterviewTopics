@@ -17,4 +17,4 @@ public class MilanPlayerFactory implements PlayerFactory {
        return new Defender();
     }
     
-}
+} //this is a class that implements the interface
