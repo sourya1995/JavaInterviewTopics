@@ -1,2 +1,4 @@
 *.class
 *.ser
+*.lock
+*.json
