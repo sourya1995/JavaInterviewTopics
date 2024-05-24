@@ -16,5 +16,10 @@ public class CountOccurrencesOfACharacter {
         return count;
     }
 
+    public String removeWhitespaces(String str) {
+        return str.replaceAll("\\s", "");
+    }
+
+
 
 }
