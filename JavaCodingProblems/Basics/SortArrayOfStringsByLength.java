@@ -9,7 +9,7 @@ public class SortArrayOfStringsByLength {
        Arrays.sort(strs, Comparator.comparing(String::length).reversed()); //for desc
     }
 
-    public static String[] sortArrayByLength(String[] strs){
+    public static String[] sortArrayByLengthJava8(String[] strs){
         return Arrays.stream(strs)
         .sorted(Comparator.comparingInt(String::length))
         .toArray(String[]::new);
