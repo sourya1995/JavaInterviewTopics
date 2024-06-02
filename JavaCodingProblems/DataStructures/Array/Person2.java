@@ -91,6 +91,7 @@ public static void main(String[] args) {
 
     });
     System.out.println(people);
+    Collections.sort(people, Comparator.comparing(Person2::getLastName).thenComparing(Person2::getFirstName));
 
    }
 
