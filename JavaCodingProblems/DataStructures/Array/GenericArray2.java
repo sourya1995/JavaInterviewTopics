@@ -1,14 +1,13 @@
 package JavaCodingProblems.DataStructures.Array;
 
-import java.lang.reflect.Array;
 
 
-public class GenericArray<T> {
+public class GenericArray2<T> {
     private T[] array;
 
     @SuppressWarnings("unchecked")
-    public GenericArray(Class<T> clazz, int size) {
-        array = (T[]) Array.newInstance(clazz, size);
+    public GenericArray2(int size){
+        array = (T[]) new Object[size];
     }
 
     public void set(int index, T value) {
@@ -19,7 +18,9 @@ public class GenericArray<T> {
         return array[index];
     }
 
-    public int length(){
+    public int length() {
         return array.length;
     }
+
+    
 }
