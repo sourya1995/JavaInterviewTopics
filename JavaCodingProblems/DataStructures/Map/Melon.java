@@ -1,6 +1,6 @@
 package JavaCodingProblems.DataStructures.Map;
 
-public class Melon {
+public class Melon implements Comparable{
     private final String type;
     private final int weight;
 
@@ -53,6 +53,11 @@ public class Melon {
         sb.append(", weight=").append(weight);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return Integer.compare(this.getWeight(), ((Melon) o).getWeight());
     }
 
 
