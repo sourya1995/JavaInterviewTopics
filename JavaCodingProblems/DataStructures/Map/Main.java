@@ -26,7 +26,7 @@ public class Main {
 
     public static <A, B> boolean equalsWithArrays(Map<A, B[]> first, Map<A, B[]> second){
         if(first.size() != second.size()) return false;
-        
-        return first.entrySet().stream().allMatch(e ->  Arrays.equals(e.getValue(), second.get(e.getKey())));
+
+        return first.entrySet().stream().anyMatch(e -> Arrays.equals(e.getValue(), second.get(e.getKey())));
     }
 }
