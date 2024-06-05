@@ -3,6 +3,7 @@ package JavaCodingProblems.DataStructures.Map;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,11 +16,10 @@ import static java.util.stream.Collectors.toMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-
+import java.util.stream.Stream;
 
 public class Main {
-      public static void main(String[] args) {
+    public static void main(String[] args) {
         Map<Integer, Melon> mapOfMelon = new HashMap<>();
         mapOfMelon.put(1, new Melon("Apollo", 3000));
         mapOfMelon.put(2, new Melon("Jade Dew", 3500));
@@ -36,78 +36,102 @@ public class Main {
         melons.put("delicious", new Melon("Apollo", 3000));
         melons.put("refreshing", new Melon("Jade Dew", 3500));
         melons.put("famous", new Melon("Cantaloupe", 1500));
-        
 
+        // remove element based on predicate
+        Map<Integer, String> map = new HashMap<>();
+        for (Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator(); it.hasNext();) {
+            Map.Entry<Integer, String> entry = it.next();
+            if (entry.getValue().equals("mysql")) {
+                it.remove();
+            }
+        }
+
+        List<Melon> filteredMelons = melons.values().stream().filter(t -> t.getWeight() >= 1000).collect(Collectors.toList());
+
+        Map<Boolean, List<Melon>> separatedMelons = melons.values().stream().collect(Collectors.partitioningBy((Melon t) -> t.getWeight() >=3000));
+        List<Melon> lessThan3k = separatedMelons.get(false);
+        List<Melon> greaterThan3k = separatedMelons.get(true);
+
+        //check if all the elements are the same
+        boolean allTheSame = Collections.frequency(melons, melons.get(0)) == melons.size();
 
     }
 
-    public static <A, B> boolean equalsWithArrays(Map<A, B[]> first, Map<A, B[]> second){
-        if(first.size() != second.size()) return false;
+    public static <A, B> boolean equalsWithArrays(Map<A, B[]> first, Map<A, B[]> second) {
+        if (first.size() != second.size())
+            return false;
 
         return first.entrySet().stream().anyMatch(e -> Arrays.equals(e.getValue(), second.get(e.getKey())));
     }
 
-    public static<K, V> TreeMap<K, V> sortByKeyTreeMap(Map<K, V> map){
+    public static <K, V> TreeMap<K, V> sortByKeyTreeMap(Map<K, V> map) {
         return new TreeMap<>(map);
-    } //sorted by natural ordering - will be sorted by natural ordering
+    } // sorted by natural ordering - will be sorted by natural ordering
 
-    public static<K, V> Map<K, V> sortByKeyStream( Map<K, V> map, Comparator<? super K> c){
-       return map.entrySet()
-       .stream()
-       .sorted(Map.Entry.comparingByKey(c))
-       .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-    }
-
-    public static<K, V> Map<K, V> sortByValueStream(Map<K, V> map, Comparator<? super V> c){
+    public static <K, V> Map<K, V> sortByKeyStream(Map<K, V> map, Comparator<? super K> c) {
         return map.entrySet()
-        .stream()
-        .sorted(Map.Entry.comparingByValue(c))
-        .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v1, LinkedHashMap::new)); //LinkedHashMap preserves insertion order
+                .stream()
+                .sorted(Map.Entry.comparingByKey(c))
+                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
     }
 
-    public static<K extends Comparable, V> List<K> sortByKeyList(Map<K, V> map){
+    public static <K, V> Map<K, V> sortByValueStream(Map<K, V> map, Comparator<? super V> c) {
+        return map.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(c))
+                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v1, LinkedHashMap::new)); // LinkedHashMap
+                                                                                                             // preserves
+                                                                                                             // insertion
+                                                                                                             // order
+    }
+
+    public static <K extends Comparable, V> List<K> sortByKeyList(Map<K, V> map) {
         List<K> list = new ArrayList<>(map.keySet());
         Collections.sort(list);
         return list;
     }
 
-    public static<K, V extends Comparable> List<V> sortByValueList(Map<K, V> map) {
+    public static <K, V extends Comparable> List<V> sortByValueList(Map<K, V> map) {
         List<V> list = new ArrayList<>(map.values());
         Collections.sort(list);
         return list;
 
     }
 
-    public static<K, V> HashMap<K, V> shallowCopy(Map<K, V> map){
-        HashMap<K, V> copy =  new HashMap<>();
+    public static <K, V> HashMap<K, V> shallowCopy(Map<K, V> map) {
+        HashMap<K, V> copy = new HashMap<>();
         copy.putAll(map);
 
         return copy;
     }
 
-    public static<K, V> HashMap<K, V> shallowCopyJava8(Map<K, V> map){
+    public static <K, V> HashMap<K, V> shallowCopyJava8(Map<K, V> map) {
         Set<Entry<K, V>> entries = map.entrySet();
-        HashMap<K, V> copy = (HashMap<K, V>) entries.stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        HashMap<K, V> copy = (HashMap<K, V>) entries.stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         copy.putAll(map);
 
         return copy;
     }
 
-    public static<K, V> Map<K, V> deepCopy(Map<K, V> map){
+    public static <K, V> Map<K, V> deepCopy(Map<K, V> map) {
         Map<K, V> copy = new HashMap<>();
         map.forEach((k, v) -> copy.put(k, v));
         return copy;
     }
 
-    public static<K, V> Map<K, V> mergeMaps(Map<K, V> map1, Map<K, V> map2) {
+    public static <K, V> Map<K, V> mergeMaps(Map<K, V> map1, Map<K, V> map2) {
         Map<K, V> map = new HashMap<>(map1);
-       map2.forEach((k, v) -> map.merge(k, v, (v1, v2) -> v2) );
+        map2.forEach((k, v) -> map.merge(k, v, (v1, v2) -> v2));
         return map;
 
     }
 
+    public static <K, V> Map<K, V> mergeMapsJava8(Map<K, V> map1, Map<K, V> map2) {
+        Stream<Map.Entry<K, V>> combined = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream());
+        Map<K, V> map = combined.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v2));
 
-
-
+        return map;
+    }
 
 }
