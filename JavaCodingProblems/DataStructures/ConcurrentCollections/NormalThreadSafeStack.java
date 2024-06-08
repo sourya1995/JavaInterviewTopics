@@ -1,9 +1,9 @@
 package JavaCodingProblems.DataStructures.ConcurrentCollections;
 
-import java.util.logging.Logger;
 import java.util.Stack;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Logger;
 
 
 
@@ -28,7 +28,7 @@ public class NormalThreadSafeStack {
                 }
                 int item = (int) (Math.random() * 1000);
                 stack.push(item);
-                LOGGER.info(() -> "Produced" + item + "by" + Thread.currentThread().getName())
+                LOGGER.info(() -> "Produced" + item + "by" + Thread.currentThread().getName());
            }
         }
         
