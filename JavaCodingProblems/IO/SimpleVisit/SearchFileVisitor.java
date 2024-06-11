@@ -2,15 +2,15 @@ package JavaCodingProblems.IO.SimpleVisit;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
+import java.nio.file.FileVisitOption;
 import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.EnumSet;
 import java.util.Objects;
-import java.nio.file.FileVisitOption;
-import java.nio.file.Files;
 
 
 
@@ -32,7 +32,7 @@ public class SearchFileVisitor implements FileVisitor {
 
     @Override
     public FileVisitResult visitFile(Object file, BasicFileAttributes attrs) throws IOException {
-       fileFound = search(file);
+       fileFound = search((Path) file);
 
        if(!fileFound){
             return FileVisitResult.CONTINUE;
