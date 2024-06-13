@@ -75,7 +75,7 @@ public class MappedByteBufferExample {
         MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, 0, length);
 
         if(buffer != null) {
-            buffer.put(data)
+            buffer.put(data);
 
     }
 }
