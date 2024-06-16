@@ -3,7 +3,9 @@ package JavaCodingProblems.FunctionalStyleProgramming;
 import java.util.List;
 import java.util.ArrayList;
 
+
 public class Melon {
+
     private final String type;
     private final int weight;
     private final String origin;
@@ -88,17 +90,27 @@ public class Melon {
      * List<Melon> huge = Filters.filterMelons(
      * melons, new HugeMelonPredicate());
      */
+    public static <T> List<T> filter(List<T> list, SomePredicate<T> predicate) {
+        List<T> result = new ArrayList<>();
+        for (T t : list) {
+            if (t != null && predicate.test(t)) {
+                result.add(t);
+            }
+        }
+        return result;
+
+    }
 
     public static void main(String[] args) {
         List<Melon> melons = new ArrayList<>();
 
         List<Melon> europeans = Melon.filterMelons(
                 melons, new MelonPredicate() {
-                    @Override
-                    public boolean test(Melon melon) {
-                        return "europe".equalsIgnoreCase(melon.getOrigin());
-                    }
-                });
+            @Override
+            public boolean test(Melon melon) {
+                return "europe".equalsIgnoreCase(melon.getOrigin());
+            }
+        });
 
         List<Melon> europeanLambda = Melon.filterMelons(melons, (Melon melon) -> "europe".equalsIgnoreCase(melon.getOrigin()));
     }
