@@ -1,7 +1,7 @@
 package JavaCodingProblems.FunctionalStyleProgramming;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Melon {
@@ -113,6 +113,14 @@ public class Melon {
         });
 
         List<Melon> europeanLambda = Melon.filterMelons(melons, (Melon melon) -> "europe".equalsIgnoreCase(melon.getOrigin()));
+        
     }
+
+    private static final TriFunctionPredicate<String, Integer, String, Melon> MELON = Melon::new;
+    public static Fruit newInstance(String type, int weight, String origin) {
+        return (Fruit) MELON.apply(type, weight, origin);
+    }
+
+
 
 }
