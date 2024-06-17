@@ -6,6 +6,11 @@ import java.util.stream.Collectors;
 
 
 public class StreamOps {
+
+    private static boolean evenBetween0and10(int i) {
+        return i % 2 == 0 && i <= 10 && i > 0;
+    }
+
     public static void main(String[] args) {
         List<Integer> ints = Arrays.asList(1, 2, -4, 0, 2, 0, -1, 14, 0, -1);
         List<Integer> result = ints
@@ -29,6 +34,15 @@ public class StreamOps {
         .peek(s -> System.out.println("\tlimit():" + s))
         .collect(Collectors.toList());
         System.out.println(result2);
+
+        List<Integer> result3 = ints
+        .stream()
+        .peek(s -> System.out.println("\tstream():" + s))
+        .filter(StreamOps::evenBetween0and10)
+        .peek(s -> System.out.println("\tfilter():" + s))
+        .collect(Collectors.toList());
+        System.out.println(result3);
+
 
 
     }
