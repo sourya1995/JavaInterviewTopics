@@ -14,7 +14,6 @@ import java.util.Random;
 import java.util.Map.Entry;
 import java.util.stream.Stream;
 
-
 public class Melon {
 
     private String type;
@@ -127,13 +126,6 @@ public class Melon {
         Map<String, Integer> frequencyMap = Stream.of(str).map(w -> w.split("\\s+")).flatMap(Arrays::stream).collect(Collectors.toMap(w -> w.toLowerCase(), w -> 1, Integer::sum));
         System.out.println(frequencyMap);
         System.out.println(frequencyMap.getClass());
-
-
-
-
-
-
-
 
     }
 
