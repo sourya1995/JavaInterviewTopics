@@ -166,5 +166,19 @@ public class Melon {
                 .collect(groupingBy(Melon::getType, collectingAndThen(
                         Collectors.toList(), l -> l.toArray(Melon[]::new))));
 
+                        List<Melon> melonsSugar = Arrays.asList(
+                            new Melon("Crenshaw", 1200, HIGH),
+                            new Melon("Gac", 3000, LOW), new Melon("Hemi", 2600, HIGH),
+                            new Melon("Hemi", 1600), new Melon("Gac", 1200, LOW),
+                            new Melon("Cantaloupe", 2600, MEDIUM),
+                            new Melon("Cantaloupe", 3600, MEDIUM),
+                            new Melon("Apollo", 2600, MEDIUM), new Melon("Horned", 1200, HIGH),
+                            new Melon("Gac", 3000, LOW), new Melon("Hemi", 2600, HIGH));
+
+        Map<Sugar, Map<Integer, Set<String>>> bySugarAndWeight = melonsSugar.stream().collect(groupingBy(Melon::getSugar, groupingBy(Melon::getWeight, TreeMap::new, mapping(Melon::getType, toSet()))));
+
+        System.out.println(bySugarAndWeight);
+                           
+
     }
 }
