@@ -6,7 +6,7 @@ public class TerminatedThread {
         t.start();
 
         Thread.sleep(2000);
-        System.out.println(t.getState());
+        System.out.println("Terminated: " + t.getState());
     }
 
     public static void main(String[] args) {
