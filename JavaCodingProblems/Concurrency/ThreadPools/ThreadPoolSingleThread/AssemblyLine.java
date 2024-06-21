@@ -22,7 +22,7 @@ public class AssemblyLine {
  = new ConcurrentLinkedQueue<>(); */  //ffor non-blocking consumer                                                                                 
     private static final int MAX_PROD_TIME_MS = 5 * 1000; // 5 seconds
     private static final int MAX_CONSUME_TIME_MS = 7 * 1000; // 7 seconds
-    private static final int TIMEOUT_MS = MAX_CONSUME_TIME_MS + 1000;
+    private static final int TIMEOUT_MS = (MAX_CONSUME_TIME_MS + MAX_PROD_TIME_MS) *  (PRODUCERS + CONSUMERS);
     private static final Logger logger = Logger.getLogger(AssemblyLine.class.getName());
     private static final Random rnd = new Random();
     private static volatile boolean runningProducer;
