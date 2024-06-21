@@ -13,6 +13,8 @@ public class AssemblyLine {
 
     private static ExecutorService producerService; // one thread for Producer
     private static ExecutorService consumerService; // one thread for Consumer
+    private static final int PRODUCERS = 3;
+    private static final int CONSUMERS = 2;
 
     private static final TransferQueue<String> queue = new LinkedTransferQueue<>(); // Producer waits to check if
                                                                                     // consumer is available + FIFO
@@ -38,7 +40,7 @@ public class AssemblyLine {
                     Thread.sleep(rnd.nextInt(MAX_PROD_TIME_MS));
                     boolean transferred = queue.tryTransfer(bulb, TIMEOUT_MS, TimeUnit.MILLISECONDS); //queue.offer(bulb) for ConcurrentLinkedQueue
                     if (transferred) {
-                        logger.info(() -> "check ho gaya:" + bulb);
+                        logger.info(() -> "check ho gaya:" + bulb + "by producer:" + Thread.currentThread().getName());
                     }
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -59,7 +61,7 @@ public class AssemblyLine {
                     String bulb = queue.poll(MAX_PROD_TIME_MS, TimeUnit.MILLISECONDS); //queue.poll() for ConcurrentLinkedQueue
                     if (bulb != null) {
                         Thread.sleep(rnd.nextInt(MAX_CONSUME_TIME_MS));
-                        logger.info(() -> "bulb packed:" + bulb);
+                        logger.info(() -> "bulb packed:" + bulb + "by consumer:" + Thread.currentThread().getName());
                     }
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -80,11 +82,15 @@ public class AssemblyLine {
         logger.info(() -> "Remaining bulbs from previous run: \n"
                 + queue + "\n\n");
         runningProducer = true;
-        producerService = Executors.newSingleThreadExecutor();
-        producerService.execute(producer);
+        producerService = Executors.newFixedThreadPool(PRODUCERS);
+        for (int i = 0; i < PRODUCERS; i++) {
+            producerService.execute(producer);
+        }
         runningConsumer = true;
-        consumerService = Executors.newSingleThreadExecutor();
-        consumerService.execute(consumer);
+        consumerService = Executors.newFixedThreadPool(CONSUMERS);
+        for (int i = 0; i < CONSUMERS; i++) {
+            producerService.execute(consumer);
+        }
 
     }
 
