@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.logging.Logger;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Phaser;
 import java.util.concurrent.BrokenBarrierException;
 
 public class ServerService implements Runnable {
@@ -13,8 +14,8 @@ public class ServerService implements Runnable {
 
     private final CyclicBarrier barrier;
 
-    public ServerService(CyclicBarrier barrier, String serviceName) {
-        this.barrier = barrier;
+    public ServerService(Phaser phaser, String serviceName) {
+        this.barrier = phaser;
         this.serviceName = serviceName;
     }
 
