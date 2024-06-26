@@ -5,12 +5,13 @@ import java.util.concurrent.locks.StampedLock;
 public class ConvertToWriteLock {
 	private final StampedLock lock = new StampedLock();
 	private int balance = 1000;
+
 	public void withdraw(int amount) {
 		long stamp = lock.readLock();
 		try {
-			while(amount <= balance) {
+			while (amount <= balance) {
 				long convertStamp = lock.tryConvertToWriteLock(stamp);
-				if(convertStamp != 0L) {
+				if (convertStamp != 0L) {
 					System.out.println("lock successfully converted");
 					stamp = convertStamp;
 					balance = balance - amount;
@@ -24,5 +25,11 @@ public class ConvertToWriteLock {
 		} finally {
 			lock.unlock(stamp);
 		}
+	}
+
+	public static void main(String[] args) {
+
+		ConvertToWriteLock convertToWriteLock = new ConvertToWriteLock();
+		convertToWriteLock.withdraw(500);
 	}
 }
