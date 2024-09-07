@@ -13,7 +13,7 @@ public class OLLCLLNoLock {
         }
 
         public void notSynchronizedMethod() {
-            System.out.println("not synchronized method:" + Thread.currentThread().getName);
+            System.out.println("not synchronized method:" + Thread.currentThread().getName());
         }
     
 }
